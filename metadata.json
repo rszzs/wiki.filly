@@ -1,0 +1,8 @@
+{
+  "name": "Remix ويكي فيلي — الموسوعة التوثيقية الحرة",
+  "description": "ويكي فيلي: الموسوعة التوثيقية الحرة لكل ما يخص الأكراد الفيليين — بوابات الشخصيات، العشائر، الفنون والثقافة، الأماكن، الأحداث التاريخية، والإعلام والسياسة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

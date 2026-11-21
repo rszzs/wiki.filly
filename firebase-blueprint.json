@@ -1,0 +1,544 @@
+{
+  "entities": {
+    "Article": {
+      "title": "Article",
+      "description": "Published Wiki Feyli encyclopedia entry across one of the six cultural portals.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "subtitle": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "portal": {
+          "type": "string",
+          "enum": [
+            "شخصيات وأعلام",
+            "عشائر وأنساب",
+            "فنون وثقافة",
+            "أماكن ومدن",
+            "أحداث تاريخية",
+            "إعلام وسياسة"
+          ]
+        },
+        "articleType": {
+          "type": "string",
+          "enum": ["person", "place", "general"]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 8000
+        },
+        "field": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "activeYears": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "birthDate": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "deathDate": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "birthDeath": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "birthplace": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "clanAffiliation": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "geographicLocation": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "administrativeRegion": {
+          "type": "string",
+          "maxLength": 240
+        },
+        "coordinates": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "populationEstimate": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "relatedClans": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "historicalEra": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "notableWorks": {
+          "type": "string",
+          "maxLength": 400
+        },
+        "infoboxRows": {
+          "type": "array"
+        },
+        "imageUrl": {
+          "type": "string",
+          "maxLength": 2048
+        },
+        "imageCaption": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "categories": {
+          "type": "array"
+        },
+        "subcategories": {
+          "type": "array"
+        },
+        "isStub": {
+          "type": "boolean"
+        },
+        "needsSources": {
+          "type": "boolean"
+        },
+        "isFeatured": {
+          "type": "boolean"
+        },
+        "sections": {
+          "type": "array"
+        },
+        "references": {
+          "type": "array"
+        },
+        "initials": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16
+        },
+        "accentTone": {
+          "type": "string",
+          "enum": ["lapis", "bronze", "forest", "terracotta"]
+        },
+        "updatedAt": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "protectionLevel": {
+          "type": "string",
+          "enum": ["semi-protected", "strict-review", "open"]
+        },
+        "designatedApprovers": {
+          "type": "array"
+        },
+        "history": {
+          "type": "array"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAtServer": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "subtitle",
+        "portal",
+        "summary",
+        "field",
+        "activeYears",
+        "birthDeath",
+        "birthplace",
+        "notableWorks",
+        "categories",
+        "sections",
+        "references",
+        "initials",
+        "accentTone",
+        "updatedAt",
+        "protectionLevel",
+        "designatedApprovers",
+        "history",
+        "createdAt",
+        "updatedAtServer"
+      ]
+    },
+    "TalkMessage": {
+      "title": "TalkMessage",
+      "description": "Discussion note posted on an encyclopedia article talk page.",
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["visitor", "moderator"]
+        },
+        "topic": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "text": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 4000
+        },
+        "displayTimestamp": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "author",
+        "authorUid",
+        "role",
+        "text",
+        "displayTimestamp",
+        "createdAt"
+      ]
+    },
+    "PendingRevision": {
+      "title": "PendingRevision",
+      "description": "Member-moderated edit proposal or new article submission awaiting editorial review.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["edit", "new_article"]
+        },
+        "articleId": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "articleName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 500
+        },
+        "submittedAt": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "approved", "rejected"]
+        },
+        "proposedData": {
+          "type": "object"
+        },
+        "originalData": {
+          "type": "object"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "reviewedAt": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "reviewedBy": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "accentTone": {
+          "type": "string",
+          "enum": ["lapis", "bronze", "forest", "terracotta"]
+        },
+        "designatedApprovers": {
+          "type": "array"
+        },
+        "protectionLevel": {
+          "type": "string",
+          "enum": ["semi-protected", "strict-review", "open"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "articleId",
+        "articleName",
+        "author",
+        "authorUid",
+        "summary",
+        "submittedAt",
+        "status",
+        "proposedData",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MemberAccount": {
+      "title": "MemberAccount",
+      "description": "Editorial supervisor account record managed in the /admin control panel.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "roleTitle": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "specialty": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 160
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "suspended"]
+        },
+        "joinedAt": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "roleTitle",
+        "specialty",
+        "status",
+        "joinedAt",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Privileged admin lookup record mapping Firebase UID to administrative access.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["role", "createdAt"]
+    },
+    "SystemSettings": {
+      "title": "SystemSettings",
+      "description": "Global Wiki Feyli encyclopedia configuration settings.",
+      "type": "object",
+      "properties": {
+        "siteName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "siteSubtitle": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "requireMemberApproval": {
+          "type": "boolean"
+        },
+        "allowImageUrls": {
+          "type": "boolean"
+        },
+        "defaultProtectionLevel": {
+          "type": "string",
+          "enum": ["semi-protected", "strict-review", "open"]
+        },
+        "announcementBanner": {
+          "type": "string",
+          "maxLength": 600
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "siteName",
+        "siteSubtitle",
+        "requireMemberApproval",
+        "allowImageUrls",
+        "defaultProtectionLevel",
+        "announcementBanner",
+        "updatedAt"
+      ]
+    },
+    "ArticleMetric": {
+      "title": "ArticleMetric",
+      "description": "Rolling 30-day visit and interaction metrics for an encyclopedia article (no PII).",
+      "type": "object",
+      "properties": {
+        "articleId": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "totalViews": {
+          "type": "number"
+        },
+        "totalInteractions": {
+          "type": "number"
+        },
+        "dailyBuckets": {
+          "type": "array"
+        },
+        "lastVisitedAt": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "articleId",
+        "totalViews",
+        "totalInteractions",
+        "dailyBuckets",
+        "lastVisitedAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/articles/{articleId}": {
+      "schema": {
+        "$ref": "#/entities/Article"
+      },
+      "description": "Published encyclopedia articles readable publicly and managed by verified administrators."
+    },
+    "/articles/{articleId}/talkMessages/{messageId}": {
+      "schema": {
+        "$ref": "#/entities/TalkMessage"
+      },
+      "description": "Discussion notes attached to an existing encyclopedia article."
+    },
+    "/pendingRevisions/{revisionId}": {
+      "schema": {
+        "$ref": "#/entities/PendingRevision"
+      },
+      "description": "Submitted edits and new article proposals awaiting review by administrators."
+    },
+    "/reviewLog/{revisionId}": {
+      "schema": {
+        "$ref": "#/entities/PendingRevision"
+      },
+      "description": "Audit log of approved and rejected contributions."
+    },
+    "/members/{memberId}": {
+      "schema": {
+        "$ref": "#/entities/MemberAccount"
+      },
+      "description": "Editorial supervisor accounts displayed in /admin."
+    },
+    "/admins/{uid}": {
+      "schema": {
+        "$ref": "#/entities/AdminRecord"
+      },
+      "description": "Trusted administrator UIDs used by security rules for RBAC verification."
+    },
+    "/settings/{settingId}": {
+      "schema": {
+        "$ref": "#/entities/SystemSettings"
+      },
+      "description": "Global platform configuration document (stored at /settings/global)."
+    },
+    "/articleMetrics/{articleId}": {
+      "schema": {
+        "$ref": "#/entities/ArticleMetric"
+      },
+      "description": "Rolling 30-day article visit and engagement counters used in the admin analytics dashboard."
+    }
+  }
+}
